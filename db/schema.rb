@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110005427) do
+ActiveRecord::Schema.define(version: 20151110011055) do
 
   create_table "questions", force: :cascade do |t|
     t.integer  "quiz_id"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20151110005427) do
     t.string   "dummy_answer1"
     t.string   "dummy_answer2"
     t.string   "real_answer"
-    t.string   "category"
     t.boolean  "accepted",      default: false
   end
 
