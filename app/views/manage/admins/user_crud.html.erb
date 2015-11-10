@@ -1,0 +1,14 @@
+user_crud.html.erb
+
+<h1>
+  Users
+</h1>
+<ul>
+
+<% @users.each do |u| %>
+<li>
+<%= u.name %>
+</li>
+
+<% end %>
+</ul>

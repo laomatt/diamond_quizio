@@ -1,0 +1,13 @@
+questions_crud.html.erb
+<h1>
+  questions
+</h1>
+<ul>
+
+<% @questions.each do |u| %>
+<li>
+<%= u.question %>
+</li>
+
+<% end %>
+</ul>

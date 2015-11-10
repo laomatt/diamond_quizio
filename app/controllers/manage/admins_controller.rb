@@ -4,9 +4,18 @@ class Manage::AdminsController < ApplicationController
   layout 'admin'
 
   def dashboard
+  end
+
+
+  def user_crud
+    @users = User.all
 
   end
 
+  def question_crud
+    @questions = Question.all
+
+  end
 
   private
 
