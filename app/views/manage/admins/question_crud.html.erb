@@ -6,7 +6,9 @@ questions_crud.html.erb
 
 <% @questions.each do |u| %>
 <li>
-<%= u.question %>
+  <a href="/manage/questions/<%= u.id %>">
+    <%= u.question %>
+  </a>
 </li>
 
 <% end %>

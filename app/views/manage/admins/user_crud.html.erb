@@ -7,7 +7,9 @@ user_crud.html.erb
 
 <% @users.each do |u| %>
 <li>
-<%= u.name %>
+  <a href="/manage/users/<%= u.id %>">
+    <%= u.name %>
+  </a>
 </li>
 
 <% end %>
