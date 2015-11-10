@@ -1,14 +1,15 @@
 November 9 
-Created Question and Category model, 
+Next are views for :
 
-Next will be to create associations:
+landing page -
+login page 
+OR
+landing page with index of categories, link to about the game / site, link to create new questions, view statistics on submitted questions
 
-Question:
-belongs_to User
-belongs_to Category
+show page for each category - 
+specific visual content to the category
+link to start quiz
 
-Category
-has_many Questions
+form page to submit new questions for review
 
-User:
-has_many Questions
+
