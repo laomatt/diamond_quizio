@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   namespace :manage do
     namespace :admins do
         get 'dashboard'
+        get 'user_crud'
+        get 'question_crud'
     end
 
+    resources :questions
+    resources :users
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,15 @@
+questions_crud.html.erb
+<h1>
+  questions
+</h1>
+<ul>
+
+<% @questions.each do |u| %>
+<li>
+  <a href="/manage/questions/<%= u.id %>">
+    <%= u.question %>
+  </a>
+</li>
+
+<% end %>
+</ul>

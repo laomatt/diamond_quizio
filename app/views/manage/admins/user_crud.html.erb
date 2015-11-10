@@ -1,0 +1,16 @@
+user_crud.html.erb
+
+<h1>
+  Users
+</h1>
+<ul>
+
+<% @users.each do |u| %>
+<li>
+  <a href="/manage/users/<%= u.id %>">
+    <%= u.name %>
+  </a>
+</li>
+
+<% end %>
+</ul>
