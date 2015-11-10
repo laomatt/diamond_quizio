@@ -1,6 +1,5 @@
 class AddAcceptedToQuestion < ActiveRecord::Migration
   def change
-    add_column :questions, :accepted, :boolean,
-    add_column :questions, :default, :false
+    add_column :questions, :accepted, :boolean, default: false
   end
 end
