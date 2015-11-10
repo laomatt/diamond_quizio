@@ -1,4 +1,14 @@
 November 9 
-1. Questions - 
-Add fields - approved?, author, citation, category and dummy answers
-Remove field - answer
+Created Question and Category model, 
+
+Next will be to create associations:
+
+Question:
+belongs_to User
+belongs_to Category
+
+Category
+has_many Questions
+
+User:
+has_many Questions
