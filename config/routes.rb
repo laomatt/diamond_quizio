@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
+  get 'categories/show'
+
   root 'users#font_page'
 
   devise_for :users, controllers: {
