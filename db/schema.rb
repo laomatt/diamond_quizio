@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110012518) do
+ActiveRecord::Schema.define(version: 20151110033629) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(version: 20151110012518) do
   create_table "questions", force: :cascade do |t|
     t.integer  "quiz_id"
     t.string   "question"
-
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "dummy_answer1"
     t.string   "dummy_answer2"
     t.string   "real_answer"
     t.boolean  "accepted",      default: false
+    t.integer  "user_id"
   end
 
   create_table "quiz_scores", force: :cascade do |t|

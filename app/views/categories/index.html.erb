@@ -1,0 +1,6 @@
+
+<% @categories.each do |individual_category|%>
+	<%= link_to "#{individual_category.name}", category_path(individual_category) %><br>
+<%end%>
+
+

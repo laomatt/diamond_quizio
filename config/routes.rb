@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
+  get 'categories/show'
+
   root 'users#font_page'
 
   devise_for :users, controllers: {
@@ -13,8 +17,12 @@ Rails.application.routes.draw do
     end
 
     resources :questions
-    resources :users
+    resources :users    
   end
+
+  resources :categories
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
