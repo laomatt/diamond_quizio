@@ -25,14 +25,15 @@ ActiveRecord::Schema.define(version: 20151112040518) do
     t.string   "question"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "user_id"
     t.string   "dummy_answer1"
     t.string   "dummy_answer2"
+    t.string   "dummy_answer3"
     t.string   "real_answer"
     t.boolean  "accepted",      default: false
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "citation"
-    t.string   "dummy_answer3"
   end
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id"
