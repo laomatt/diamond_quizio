@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'questions/new'
+
   get 'categories/index'
 
   get 'categories/show'
