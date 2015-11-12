@@ -4,12 +4,12 @@ Next are views for :
 landing page -
 login page 
 OR
-landing page with index of categories, link to about the game / site, link to create new questions, view statistics on submitted questions
+link to create new questions (form page / form page to submit new questions for review
+), view statistics on submitted questions
 
 show page for each category - 
 specific visual content to the category
 link to start quiz
 
-form page to submit new questions for review
 
 
