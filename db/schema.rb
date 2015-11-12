@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112035543) do
+ActiveRecord::Schema.define(version: 20151112040518) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20151112035543) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "citation"
+    t.string   "dummy_answer3"
   end
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id"
