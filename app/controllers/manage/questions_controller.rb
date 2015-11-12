@@ -9,6 +9,12 @@ class Manage::QuestionsController < Manage::BaseController
 
   end
 
+  def approve
+    @question.approve
+
+    render :json => @question
+  end
+
   def new
 
   end
