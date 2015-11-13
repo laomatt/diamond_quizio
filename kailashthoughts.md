@@ -1,4 +1,8 @@
-November 10 
+November 11
+
+create controller create method
+research distribution
+
 Next are views for :
 
 landing page -
