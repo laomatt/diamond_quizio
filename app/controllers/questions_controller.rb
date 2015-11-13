@@ -6,18 +6,14 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		@user = "hi"
-
-		p"*"*80
-		p question_params
-
-		@question = Question.create(question_params)
+		@category = Category.find(category_params["category_id"])
+		@question = @category.questions.build(question_params)
 		if @question.save
 			flash[:success] = "question submitted!"
-			render action: "index" 
+			redirect_to @category
 		else
 			flash[:danger] = "sorry there was an error"
-			render action: "index"
+			redirect_to @category
 		end
 	end
 
@@ -25,10 +21,15 @@ class QuestionsController < ApplicationController
 
 	private 
 
+	def category_params
+		params.require(:category).permit(:category_id)
+	end
 
 	def question_params
 		params.require(:question).permit(:question, :real_answer,
 			:dummy_answer1, :dummy_answer2, :dummy_answer3, :citation, :category_id)
 	end
+
+
 
 end
