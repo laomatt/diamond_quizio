@@ -8,19 +8,24 @@ Rails.application.routes.draw do
   root 'users#font_page'
 
   devise_for :users, controllers: {
-    sessions: 'devise/sessions'
+    sessions: 'devise/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   namespace :manage do
     namespace :admins do
-        get 'dashboard'
-        get 'user_crud'
-        get 'question_crud'
+      get 'dashboard'
+      get 'user_crud'
+      get 'question_crud'
     end
 
     resources :questions
-    resources :users    
+    resources :users
   end
+
+  # devise_scope :user do
+  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   resources :categories
   resources :questions
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'users#front_page'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
