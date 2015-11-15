@@ -9,19 +9,23 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'devise/sessions',
-    omniauth_callbacks: 'omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   namespace :manage do
     namespace :admins do
-        get 'dashboard'
-        get 'user_crud'
-        get 'question_crud'
+      get 'dashboard'
+      get 'user_crud'
+      get 'question_crud'
     end
 
     resources :questions
     resources :users
   end
+
+  # devise_scope :user do
+  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   resources :categories
   resources :questions
