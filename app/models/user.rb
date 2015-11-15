@@ -7,12 +7,14 @@ class User < ActiveRecord::Base
   has_many :questions
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.avatar_url = auth.info.image # assuming the user model has an image
+    if User.exists?(:email => auth.info.email)
+      user = User.find_by_email(auth.info.email)
+      user.update_attributes(avatar_url: auth.info.image)
+      user
+    else
+      user = User.create(name: auth.extra.raw_info.name, email: auth.info.email, avatar_url: auth.info.image, password: Devise.friendly_token[0,20])
     end
+    user
   end
 
   def self.new_with_session(params, session)

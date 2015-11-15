@@ -1,3 +1,7 @@
-public.html.erb
+<% if current_user %>
+  <%= current_user.name %>
+<% else %>
+  Login
+<% end %>
 
 <%= yield %>
