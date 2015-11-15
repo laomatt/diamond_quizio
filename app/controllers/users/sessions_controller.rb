@@ -16,6 +16,7 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
+
   protected
 
   # You can put the params you want to permit in the empty array.
