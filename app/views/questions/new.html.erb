@@ -12,29 +12,29 @@
 	Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
 </div>
 <br>
-<div class="question-form">
+<div class="question-form form-group">
 	<%= form_for([@question]) do |f|%>
 
 	<%= f.label :categories, "Category", class: "question-form-title"%>
 	<%= select("category", "category_id", Category.all.collect {|c| [ c.name, c.id ] }, { include_blank: false })%><br>
 
-	<%= f.label :question, "Question", class: "question-form-title"%>
-	<%= f.text_field :question, class: "question-form-control"%><br>
+	<%= f.label :question, "Question", class: "question-form-title "%>
+	<%= f.text_field :question, class: "question-form-control form-control"%><br>
 
 	<%= f.label :real_answer, "Answer", class: "question-form-title"%>
-	<%= f.text_field :real_answer, class: "question-form-control" %><br>
+	<%= f.text_field :real_answer, class: "question-form-control form-control" %><br>
 
 	<%= f.label :dummy_answer1, "First Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer1, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer1, class: "question-description form-control"%><br>
 
 	<%= f.label :dummy_answer2, "Second Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer2, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer2, class: "question-description form-control"%><br>
 
 	<%= f.label :dummy_answer3, "Third Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer3, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer3, class: "question-description form-control"%><br>
 
 	<%= f.label :citation, "Citation", class: "question-form-title"%> 
-	<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blooded Prince, pg.596)", class: "question-description"%>
+	<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blooded Prince, pg.596)", class: "question-description form-control"%>
 
 	<%= f.submit "Create question", class: "btn btn-primary"%>
 	<% end %>
