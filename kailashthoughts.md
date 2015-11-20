@@ -1,5 +1,4 @@
 November 19
-style new question page
 
 Add top nav bar 
 - link to home
