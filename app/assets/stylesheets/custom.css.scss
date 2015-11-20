@@ -16,7 +16,19 @@ h1 {
   margin-bottom: 30px;
   text-align: center;
 }
+/* Navbar */
 
+.container{
+	width: 80% !important;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:4px !important; 
+    padding-bottom:0 !important;
+    height: 28px;
+}
+
+.navbar {min-height:28px !important;}
 
 /* Footer */
 
@@ -43,6 +55,17 @@ footer {
     }
   }
 }
+
+/* Category Display*/
+
+.category-container{
+  width: 60%;
+  margin-left: 20%;
+  padding: 3%;
+  border-left: 1px dotted grey;
+  border-right: 1px dotted grey;
+}
+
 
 /* Questions */
 
