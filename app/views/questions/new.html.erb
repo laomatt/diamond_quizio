@@ -1,8 +1,9 @@
-<h2>Question Submission:</h2>
+<h1>Question Submission:</h1>
 <div class="question-form-instructions">
 	Use this page to submit a great question for any of our categories that will be used by other quiz takers. Here are the things we like to keep in mind when designing new questions:
 	<ul>
 		<li>MOST IMPORTANT - Create a question based on the book version of the story not a movie / TV show version </li>
+		<li> Try to write questions with one word, person or group per answer (not a sentence)
 		<li>The easiest way to come up with something is read a random chapter from your favorite category and notice interesting themes or events that play into the grand scheme of the story</li>
 		<li>We find one of the best source of question quality comes from great incorrect answers, try looking for details that are easy to confuse or two character theme that are easy to mix up</li>
 		<li>Try to avoid questions about details on fine details about very minor plot points</li>
@@ -12,30 +13,30 @@
 	Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
 </div>
 <br>
-<div class="question-form">
+<div class="question-form form-group">
 	<%= form_for([@question]) do |f|%>
 
 	<%= f.label :categories, "Category", class: "question-form-title"%>
-	<%= select("category", "category_id", Category.all.collect {|c| [ c.name, c.id ] }, { include_blank: false })%><br>
+	<%= select("category", "category_id", Category.all.collect {|c| [ c.name, c.id ] }, { include_blank: false }, {:class => "question-form-control form-control"})%><br>
 
 	<%= f.label :question, "Question", class: "question-form-title"%>
-	<%= f.text_field :question, class: "question-form-control"%><br>
+	<%= f.text_field :question, class: "question-form-control form-control"%><br>
 
 	<%= f.label :real_answer, "Answer", class: "question-form-title"%>
-	<%= f.text_field :real_answer, class: "question-form-control" %><br>
+	<%= f.text_field :real_answer, class: "question-form-control form-control" %><br>
 
 	<%= f.label :dummy_answer1, "First Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer1, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer1, class: "question-form-control form-control"%><br>
 
 	<%= f.label :dummy_answer2, "Second Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer2, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer2, class: "question-form-control form-control"%><br>
 
 	<%= f.label :dummy_answer3, "Third Dummy Answer", class: "question-form-title"%> 
-	<%= f.text_field :dummy_answer3, class: "question-description"%><br>
+	<%= f.text_field :dummy_answer3, class: "question-form-control form-control"%><br>
 
 	<%= f.label :citation, "Citation", class: "question-form-title"%> 
-	<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blooded Prince, pg.596)", class: "question-description"%>
+	<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blooded Prince, pg.596)", class: "question-form-control form-control"%>
 
-	<%= f.submit "Create question", class: "btn btn-primary"%>
+	<%= f.submit "Submit Question", class: "new-question-button btn btn-primary"%>
 	<% end %>
 </div>
