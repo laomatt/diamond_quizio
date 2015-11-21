@@ -1,5 +1,5 @@
 class Manage::QuestionsController < Manage::BaseController
-  before_filter :find_question
+  before_filter :find_question, :except => [:index]
 
   def index
 
