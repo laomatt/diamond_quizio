@@ -14,13 +14,9 @@ class CategoriesController < ApplicationController
   	@category = Category.find(params[:id])
   end
 
+  private
 
-
-private
-
-def category_params
-	params.require(:category).permit(:name,:image_url)
-end
-
-
+  def category_params
+  	params.require(:category).permit(:name,:image_url)
+  end
 end

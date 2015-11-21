@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .navbar li{
+    text-decoration: none;
+    list-style: none;
+    display: inline;
+
+ }
+
+ .admin-box {
+    background-color: yellow;
+    top: 0%;
+    position: fixed;
+    width: 100%;
+    list-style: none;
+    padding-left: 40%;
+}
+
+.admin-links li {
+  display: inline;
+  background-color: yellow;
+}
+
+.admin-links {
+  position: absolute;
+}
