@@ -6,10 +6,18 @@ Rails.application.routes.draw do
   get 'categories/show'
 
   root 'users#font_page'
+  # resources :users do
+  #   member do
+  #     get 'show'
+  #   end
+  # end
+
+
+  get 'user_info/:id/show_info' => "users#show"
 
   devise_for :users, controllers: {
     sessions: 'devise/sessions',
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
   }
 
   namespace :manage do
@@ -23,9 +31,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  # devise_scope :user do
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
+  devise_scope :user do
+    get 'user_log_out_route/sign_out', :to => 'devise/sessions#destroy'
+  end
 
   resources :categories
   resources :questions

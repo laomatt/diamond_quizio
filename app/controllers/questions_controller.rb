@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-
+layout 'public'
 	def new
 		@user = "hi"
 		@question = Question.new
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
 
 
 
-	private 
+	private
 
 	def category_params
 		params.require(:category).permit(:category_id)

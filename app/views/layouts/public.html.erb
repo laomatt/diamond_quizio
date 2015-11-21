@@ -1,7 +1,97 @@
-<% if current_user %>
-  <%= current_user.name %>
-<% else %>
-  Login
-<% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+<% if user_signed_in? %>
+<div class="navbar">
+  <a href="/user_info/<%= current_user.id %>/show_info">
+    <img src="<%= current_user.avatar_url %>" alt="">
+    <%= current_user.name %>
+  </a>
+  |
+  <a href="/questions/new">
+    Submit Trivia
+  </a>
+  |
+  <a href="/categories">
+   Browse Quizes
+  </a>
+  |
+  <a href="/">
+    Home
+  </a>
+
+
+<style>
+  .admin-box {
+    position: absolute;
+    left: 48%;
+    width: 200px;
+    background-color: yellow;
+    top: 0%;
+  }
+</style>
+
+<script>
+  $("body").on('click', '.drop-admin-box', function(event) {
+    event.preventDefault();
+    $('.admin-links').slideDown('300', function() {
+
+    });
+  });
+  $('body').on('click', '.close-admin-box', function(event) {
+    event.preventDefault();
+    $('.admin-links').slideUp(300)
+  });
+</script>
+<% if current_user.admin? %>
+  <div class="admin-box">
+    <a href="#" class="drop-admin-box">Admin controls</a>
+    <ul class="admin-links" style="display:none;">
+      <li>
+        <a href="/manage/questions">question pool</a>
+      </li>
+      <li>
+        <a href="/manage/admins/question_crud">
+          pending questions
+        </a>
+      </li>
+      <li>
+        <a href="/manage/admins/user_crud">
+          users control
+        </a>
+      </li>
+      <li>
+        <a href="/manage/admins/dashboard">admin dashboard</a>
+      </li>
+      <div style="float:right">
+        <a href="#" class="close-admin-box">
+          [x]
+        </a>
+      </div>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <div style="float:right">
+    <a href="/user_log_out_route/sign_out">Log out</a>
+  </div>
+</div>
+
+
+
+<% else %>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<% end %>
+<hr>
 <%= yield %>
+
+<form action=<%=destroy_user_session_path%> method="delete" class="log-out-form">
+  <input type="hidden" value="delete" name="method">
+</form>
+<script>
+  $('body').on('click', '.logout-button', function(event) {
+    event.preventDefault();
+    $('.log-out-form').trigger('submit');
+  });
+
+</script>
