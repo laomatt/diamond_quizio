@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
+  layout 'public'
 
   # GET /resource/sign_in
   def new
@@ -13,7 +14,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
+    byebug
     super
+    redirect_to '/'
   end
 
 
