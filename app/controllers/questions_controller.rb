@@ -8,12 +8,13 @@ layout 'public'
 	def create
 		@category = Category.find(category_params["category_id"])
 		@question = @category.questions.build(question_params)
+		@question.update_attributes(:user_id => current_user.id)
 		if @question.save
 			flash[:success] = "question submitted!"
-			redirect_to @category
+			redirect_to :back
 		else
 			flash[:danger] = "sorry there was an error"
-			redirect_to @category
+			redirect_to :back
 		end
 	end
 

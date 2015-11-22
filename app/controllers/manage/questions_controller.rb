@@ -9,10 +9,14 @@ class Manage::QuestionsController < Manage::BaseController
 
   end
 
+  def disapprove
+    @question.disapprove(params[:disapproval_reason])
+    redirect_to '/manage/admins/question_crud'
+  end
+
   def approve
     @question.approve
-
-    render :json => @question
+    redirect_to '/manage/admins/question_crud'
   end
 
   def new
@@ -23,7 +27,7 @@ class Manage::QuestionsController < Manage::BaseController
   end
 
   def show
-
+    @dummy_ans = [@question.dummy_answer1,@question.dummy_answer2,@question.dummy_answer3]
   end
 
   def update

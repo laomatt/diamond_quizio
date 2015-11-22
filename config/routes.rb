@@ -28,7 +28,12 @@ Rails.application.routes.draw do
       get 'question_crud'
     end
 
-    resources :questions
+    resources :questions do
+      member do
+        get 'approve'
+        get 'disapprove'
+      end
+    end
     resources :users
   end
 
