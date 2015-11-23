@@ -11,15 +11,18 @@ quizzes taken
 
 <br>
 analytics
-
+<hr>
 <br>
-your questions
+<h3>
+  your questions
+</h3>
 
 <div class="question-box">
   <% @questions.each do |q| %>
     <% if q.accepted %>
     <div class="row approved-question">
       <%= q.question %>
+      <font color="white">Approved!</font>
     </div>
     <% else %>
     <div class="row non-approved-question">

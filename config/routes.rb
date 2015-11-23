@@ -41,7 +41,11 @@ Rails.application.routes.draw do
     get 'user_log_out_route/sign_out', :to => 'devise/sessions#destroy'
   end
 
-  resources :categories
+  resources :categories do
+    member do
+
+    end
+  end
   resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.
