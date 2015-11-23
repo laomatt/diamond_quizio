@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'categories/show'
 
-  root 'users#font_page'
+  root 'users#front_page'
 
   resources :users do
     member do
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get 'font_page'
     end
   end
-  
+
   get 'user_info/:id/show_info' => "users#show"
 
   devise_for :users, controllers: {
