@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     get 'user_log_out_route/sign_out', :to => 'devise/sessions#destroy'
   end
 
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+  resources "contacts", only: [:new, :create]
+
   resources :categories
   resources :questions
 
