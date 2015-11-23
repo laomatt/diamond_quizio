@@ -4,12 +4,10 @@ class Contact < MailForm::Base
   attribute :message
   attribute :nickname,  :captcha  => true
 
-  # Declare the e-mail headers. It accepts anything the mail method
-  # in ActionMailer accepts.
   def headers
     {
-      :subject => "My Contact Form",
-      :to => "your_email@example.org",
+      :subject => "User Need",
+      :to => "diamondtrivia@gmail.com",
       :from => %("#{name}" <#{email}>)
     }
   end
