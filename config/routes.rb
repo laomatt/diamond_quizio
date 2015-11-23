@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   get 'categories/show'
 
   root 'users#font_page'
+
   resources :users do
     member do
       get 'show'
       get 'font_page'
     end
   end
-
-
+  
   get 'user_info/:id/show_info' => "users#show"
 
   devise_for :users, controllers: {
