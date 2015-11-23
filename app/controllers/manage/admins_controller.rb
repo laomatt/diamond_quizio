@@ -6,7 +6,7 @@ class Manage::AdminsController < Manage::BaseController
   end
 
   def question_crud
-    @questions = Question.all
+    @questions = Question.select {|e| e.accepted == false}
   end
 
 end

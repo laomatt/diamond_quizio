@@ -39,3 +39,8 @@
 .admin-links {
   position: absolute;
 }
+
+.body-div {
+  position: relative;
+  left: 20%;
+}
