@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       member do
         get 'approve'
         get 'disapprove'
+        get 'trash'
       end
     end
     resources :users

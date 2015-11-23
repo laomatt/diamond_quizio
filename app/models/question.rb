@@ -7,8 +7,9 @@ class Question < ActiveRecord::Base
     self.update_attributes(:accepted => true)
   end
 
-  def disapprove(reason)
-    self.update_attributes(:accepted => false, :disapproval_reason => reason)
+  def disapprove(reason, user)
+    message = "#{reason} (by #{user.name})"
+    self.update_attributes(:accepted => false, :disapproval_reason => message, :status => message)
   end
 
 end

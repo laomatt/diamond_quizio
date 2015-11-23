@@ -13,3 +13,51 @@ category list
 
 <br>
 form to submit new category
+
+
+<h3>Current Question pool</h3>
+
+<div class="question-box">
+  <% @questions.each do |q| %>
+    <% if q.accepted %>
+    <div class="row approved-question">
+      <img class="small-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
+      <%= q.question %>
+      <a href="#" class="nonapplink" qid="<%= q.id %>"><font color="white">Approved!</font></a>
+    </div>
+    <% else %>
+    <div class="row non-approved-question">
+      <img class="small-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
+      <%= q.question %>
+      <a href="#" class="nonapplink" qid="<%= q.id %>">Not approved</a>
+    </div>
+    <% end %>
+    <div id="non-app-info<%= q.id %>" style="display:none">
+      answer: <%= q.real_answer %> <br>
+      dummy answer: <%= q.dummy_answer1 %> <br>
+      dummy answer: <%= q.dummy_answer2 %> <br>
+      dummy answer: <%= q.dummy_answer3 %> <br>
+      <i>
+        citation: <%= q.citation %> <br>
+      </i>
+      <font color="red">
+        <%= q.disapproval_reason %>
+      </font>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $("body").on('click', '.nonapplink', function(event) {
+    event.preventDefault();
+    var id = $(this).attr('qid');
+    var that = $('#non-app-info' + id);
+
+    if(that.css('display') == 'block'){
+      that.slideUp('300', function() {});
+    }
+    else{
+      that.slideDown('300', function() {});
+    }
+  });
+</script>

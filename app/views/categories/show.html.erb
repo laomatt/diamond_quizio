@@ -8,12 +8,14 @@
       <input type="hidden" name="cat_id" value="<%= @category.id %>">
       <% @ques.each_with_index do |q, idx| %>
         <div class="question-box">
+            <img class="medium-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
           <%= idx + 1 %>.)<%= q.question %> <br>
           <hr>
           <% pool = [{show:q.real_answer, val:'right'}, {show:q.dummy_answer1, val:'wrong'}, {show:q.dummy_answer2, val:'wrong'}, {show:q.dummy_answer3, val:'wrong'}].shuffle! %>
             <% pool.each do |p|%>
               <input type="radio" id="qtn<%= idx %>" name="ans<%= idx %>" value=<%= p[:val] %>><%= p[:show] %> <br>
             <% end %>
+
         </div>
       <% end %>
     </form>
