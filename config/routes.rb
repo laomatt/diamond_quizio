@@ -44,7 +44,8 @@ Rails.application.routes.draw do
 
   resources :categories do
     member do
-
+      get 'score'
+      get 'tabulate_scores'
     end
   end
   resources :questions
