@@ -5,14 +5,14 @@ Rails.application.routes.draw do
 
   get 'categories/show'
 
-  root 'users#font_page'
+  root 'users#front_page'
+
   resources :users do
     member do
       get 'show'
       get 'font_page'
     end
   end
-
 
   get 'user_info/:id/show_info' => "users#show"
 
@@ -42,12 +42,16 @@ Rails.application.routes.draw do
     get 'user_log_out_route/sign_out', :to => 'devise/sessions#destroy'
   end
 
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+  resources "contacts", only: [:new, :create]
+
   resources :categories do
     member do
       get 'score'
       get 'tabulate_scores'
     end
   end
+
   resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.
