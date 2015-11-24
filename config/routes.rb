@@ -28,7 +28,13 @@ Rails.application.routes.draw do
       get 'question_crud'
     end
 
-    resources :questions
+    resources :questions do
+      member do
+        get 'approve'
+        get 'disapprove'
+        get 'trash'
+      end
+    end
     resources :users
   end
 
@@ -39,7 +45,13 @@ Rails.application.routes.draw do
   match '/contacts',     to: 'contacts#new',             via: 'get'
   resources "contacts", only: [:new, :create]
 
-  resources :categories
+  resources :categories do
+    member do
+      get 'score'
+      get 'tabulate_scores'
+    end
+  end
+
   resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.

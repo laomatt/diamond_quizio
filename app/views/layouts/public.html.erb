@@ -92,7 +92,9 @@
 
 
 <body>
-  <%= yield %>
+  <div class="body-div">
+    <%= yield %>
+  </div>
 </body>
 
 <form action=<%=destroy_user_session_path%> method="delete" class="log-out-form">

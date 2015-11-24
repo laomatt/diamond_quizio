@@ -1,3 +1,50 @@
-<h3>This page will have some nice image on the category and a link to take its quiz</h3>	
+<h3>This page will have some nice image on the category and a link to take its quiz</h3>
 
 <%=@category.name%>
+
+<div class="quiz-box">
+    <form id="quiz-form" action="/categories/<%= @category.id %>/tabulate_scores">
+      <input type="hidden" name="question_list" value="<%= @qlist %>">
+      <input type="hidden" name="cat_id" value="<%= @category.id %>">
+      <% @ques.each_with_index do |q, idx| %>
+        <div class="question-box">
+            <img class="medium-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
+          <%= idx + 1 %>.)<%= q.question %> <br>
+          <hr>
+          <% pool = [{show:q.real_answer, val:'right'}, {show:q.dummy_answer1, val:'wrong'}, {show:q.dummy_answer2, val:'wrong'}, {show:q.dummy_answer3, val:'wrong'}].shuffle! %>
+            <% pool.each do |p|%>
+              <input type="radio" id="qtn<%= idx %>" name="score[ans<%= idx %>]" value=<%= p[:val] %>><%= p[:show] %> <br>
+            <% end %>
+
+        </div>
+      <% end %>
+    </form>
+    <a href="#" id="submit-button">submit</a>
+</div>
+<script>
+  var numbers = [0,1,2,3,4,5,6,7,8,9]
+  var questions = []
+  for(var i in numbers){
+    questions.push('qtn'+i);
+  }
+
+  $("body").on('click', '#submit-button', function(event) {
+    event.preventDefault();
+    var completed = true;
+    var message = []
+    for(var i in questions){
+      if($("#qtn"+i).val() == null){
+        // completed = false;
+        message.push(i+1);
+      }
+    }
+
+    if(completed == true){
+      $("#quiz-form").trigger('submit');
+    }
+    else{
+      alert('quiz incomplete:' + message.join(','))
+    }
+  });
+
+</script>

@@ -1,1 +1,62 @@
-show.html.erb
+<div class="question-container">
+  <div class="question">
+    <%= @question.question %>
+  </div>
+  <hr>
+  <div class="ans real-answer">
+    <%= @question.real_answer %>
+  </div>
+  <% @dummy_ans.each do |a| %>
+    <div class="ans dummy-answer">
+      <%= a %>
+    </div>
+  <% end %>
+  <i>
+    <%= @question.citation %>
+  </i>
+</div>
+
+<div class="approve-controls">
+  <a href="#" class="appr">approve?</a> | <a href="#" class="disp">disapprove?</a>| <a href="/manage/questions/<%= @question.id %>/trash">trash this question</a>
+</div>
+
+<div class="dis-reason" style="display:none">
+  <form action="/manage/questions/<%= @question.id %>/disapprove">
+      <input type="radio" class="radip-disp" name="disapproval_reason" value="this is the wrong answer">Wrong answer <br>
+      <input type="radio" class="radip-disp" name="disapproval_reason" value="this question is off topic">Off topic <br>
+      <input type="radio" class="radip-disp" name="disapproval_reason" value="this question was deemed vulgar or offensive">Vulgar/offensive <br>
+      <input type="radio" class="radip-disp" name="disapproval_reason" value="other" id="other-opt">other <br>
+    <textarea style ="display:none" id="disapproval_reason" cols="30" rows="10"></textarea>
+    <input type="submit" value="submit">
+  </form>
+</div>
+
+<form action="/manage/questions/<%= @question.id %>/approve" id="appr-quest-form"></form>
+
+<script>
+  $('body').on('change', '.radip-disp', function(event) {
+    event.preventDefault();
+      if($(this).attr('id') == 'other-opt'){
+        $("#disapproval_reason").slideDown('300', function() {});
+      }
+      else{
+        $("#disapproval_reason").slideUp('300', function() {});
+      }
+  });
+
+  $('body').on('click', '.appr', function(event) {
+    event.preventDefault();
+    $("#appr-quest-form").trigger('submit');
+  });
+
+  $('body').on('keyup', '#disapproval_reason', function(event) {
+    event.preventDefault();
+    var text = $(this).val();
+    $("#other-opt").val(text);
+  });
+
+  $('body').on('click', '.disp', function(event) {
+    event.preventDefault();
+    $('.dis-reason').slideDown('300', function() {});
+  });
+</script>

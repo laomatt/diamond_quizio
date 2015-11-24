@@ -1,14 +1,21 @@
-questions_crud.html.erb
 <h1>
-  questions
+  questions pending
 </h1>
 <ul>
-
+<li class="row">
+  <div class="ro question">Question</div>
+  <div class="ro status">Status</div>
+</li>
 <% @questions.each do |u| %>
-<li>
+<li class="row">
+  <div class="question">
   <a href="/manage/questions/<%= u.id %>">
     <%= u.question %>
   </a>
+  </div>
+  <div class="status">
+    <%= u.status %>
+  </div>
 </li>
 
 <% end %>
