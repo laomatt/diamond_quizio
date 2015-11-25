@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :find_user, :except => [:font_page]
+  before_filter :authenticate_user!, :find_user, :except => [:front_page]
   layout 'public'
 
-  def font_page
+  def front_page
   end
 
   def show
