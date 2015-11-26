@@ -1,0 +1,116 @@
+<h2>
+  <%= @question.question %>
+</h2>
+<div class="question-box">
+  <div class="question">
+    Answers:
+  </div>
+  <hr>
+  <div class="ans real-answer">
+    <%= @question.real_answer %>
+  </div>
+  <% @dummy_ans.each do |a| %>
+    <div class="ans dummy-answer">
+      <%= a %>
+    </div>
+  <% end %>
+  Citation:
+  <i>
+    <%= @question.citation %>
+  </i>
+</div>
+
+<div class="question-box discussion">
+
+  <div class="question-box comment-box">
+    <h6>Submit a comment to this question</h6>
+    <form action="/comments" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input type="hidden" name="question[question_id]" value="<%= @question.id %>">
+      <textarea name="comment[comment]" id="" cols="70" rows="2"></textarea>
+      <input type="submit">
+    </form>
+  </div>
+
+  <% @question.comments.each do |c|%>
+    <div class="comment-wrapper">
+      <div class="question-box comment-box bubble comment">
+        <b>
+          <%= c.user.name %> says: <br>
+        </b>
+        <p style="margin-left:20px">
+          <%= c.comment %>
+          <hr>
+          <i><%= c.created_at.strftime('%b %e, %Y @ %k:%M %P') %></i>
+        </p>
+        <p style="float:right">
+          <a href="#" class="show-replies">Show <%= c.replies.count %> replies</a> |
+          <a href="#" class="reply-to-comment">Reply</a>
+        </p>
+      </div>
+      <div class="user-info-question-show">
+        <img class="medium-avatar" src="<%= c.user.avatar_url %>" alt="<%= c.user.name %>">
+      </div>
+
+      <div class="reply-wrapper" id="new-reply-box" style="display:none">
+        <div class="question-box comment-box bubble reply">
+          <br>
+          <form action="/replies" method="POST">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="comment[comment_id]" value="<%= c.id %>">
+            <textarea name="reply[reply]" id="" cols="30" rows="2"></textarea>
+            <input type="submit">
+          </form>
+        </div>
+        <div class="user-info-question-show reply-user">
+          <img class="medium-avatar" src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>">
+        </div>
+      </div>
+
+      <div class="reply-container" style="display:none">
+        <% c.replies.each do |r| %>
+          <div class="reply-wrapper">
+            <div class="question-box comment-box bubble reply">
+              <b style="font-size:10pt"><%= r.user.name %> replied:</b> <br>
+              <p style="float:right;margin-right:5%">
+              <%= r.reply  %>
+              <hr>
+              <i><%= r.created_at.strftime('%b %e, %Y @ %k:%M %P') %></i>
+              </p>
+
+            </div>
+
+            <div class="user-info-question-show reply-user">
+              <img class="medium-avatar" src="<%= r.user.avatar_url %>" alt="<%= r.user.name %>">
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>
+
+<script>
+  $('body').on('click', '.reply-to-comment', function(event) {
+    event.preventDefault();
+    $('#new-reply-box').slideDown('200', function() {
+
+    });
+  });
+
+  $('body').on('click', '.show-replies', function(event) {
+    event.preventDefault();
+    $(this).parent().parent().parent().find('.reply-container').slideDown('300', function() {
+
+    });
+    $(this).attr('class', 'hide-replies');
+    $(this).html('Hide replies')
+  });
+
+  $('body').on('click', '.hide-replies', function(event) {
+    event.preventDefault();
+    $(this).parent().parent().parent().find('.reply-container').slideUp('300', function() {})
+  });
+</script>

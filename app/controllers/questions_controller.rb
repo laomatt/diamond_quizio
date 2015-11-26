@@ -5,6 +5,12 @@ layout 'public'
 		@question = Question.new
 	end
 
+	def show
+		@question = Question.find(params[:id])
+		@dummy_ans = [@question.dummy_answer1,@question.dummy_answer2,@question.dummy_answer3]
+
+	end
+
 	def create
 		@category = Category.find(category_params["category_id"])
 		@question = @category.questions.build(question_params)

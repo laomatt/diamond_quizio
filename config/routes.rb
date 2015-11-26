@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments
+
+  resources :replies
+
   get 'user_info/:id/show_info' => "users#show"
 
   devise_for :users, controllers: {
