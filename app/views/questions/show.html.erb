@@ -44,7 +44,7 @@
           <i><%= c.created_at.strftime('%b %e, %Y @ %k:%M %P') %></i>
         </p>
         <p style="float:right">
-          <a href="#" class="show-replies">Show <%= c.replies.count %> replies</a> |
+          <a href="#" class="show-replies" num="<%= c.replies.count %>">Show <%= c.replies.count %> replies</a> |
           <a href="#" class="reply-to-comment">Reply</a>
         </p>
       </div>
@@ -102,15 +102,19 @@
 
   $('body').on('click', '.show-replies', function(event) {
     event.preventDefault();
+    var amt = $(this).attr('num');
     $(this).parent().parent().parent().find('.reply-container').slideDown('300', function() {
-
     });
     $(this).attr('class', 'hide-replies');
-    $(this).html('Hide replies')
+    $(this).html('Hide '+amt+' replies');
   });
 
   $('body').on('click', '.hide-replies', function(event) {
+    var amt = $(this).attr('num');
     event.preventDefault();
-    $(this).parent().parent().parent().find('.reply-container').slideUp('300', function() {})
+    $(this).parent().parent().parent().find('.reply-container').slideUp('300', function() {
+    })
+    $(this).attr('class', 'show-replies');
+    $(this).html('Show '+amt+' replies');
   });
 </script>
