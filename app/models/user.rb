@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :questions
+  has_many :comments
+  has_many :replies
 
   def self.from_omniauth(auth)
     if User.exists?(:email => auth.info.email)

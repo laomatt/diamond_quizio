@@ -1,3 +1,61 @@
-// Place all the styles related to the Questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-box {
+    background-color: white;
+    width: 100%;
+    position: relative;
+}
+
+.user-info-question-show {
+    width: 10%;
+    padding: 3%;
+    position: relative;
+    background-color: transparent;
+    float: left;
+}
+
+.comment-wrapper {
+
+}
+
+.comment {
+    float: right;
+    margin-left: 7%;
+    padding-bottom: 2px;
+}
+
+.bubble {
+  position: relative;
+  background-color: white;
+  width: 88%;
+  margin: 5px;
+
+
+}
+
+.reply-wrapper {
+  overflow: auto;
+  position: relative;
+  background-color: transparent;
+  width: 60%;
+  float: right;
+}
+
+.reply {
+  width: 80%;
+  position: relative;
+  margin-top: 0%;
+  float: left;
+}
+
+.discussion {
+  /*padding: 0%*/
+  overflow: auto
+
+}
+
+
+.reply-user {
+  float:right;
+  position: relative;
+  right:0px;
+  padding: 2%;
+}

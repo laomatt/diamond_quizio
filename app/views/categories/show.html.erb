@@ -15,7 +15,7 @@
             <% pool.each do |p|%>
               <input type="radio" id="qtn<%= idx %>" name="score[ans<%= idx %>]" value=<%= p[:val] %>><%= p[:show] %> <br>
             <% end %>
-
+<a href="/questions/<%= q.id %>">Discuss this</a>
         </div>
       <% end %>
     </form>
