@@ -32,7 +32,7 @@
     </form>
   </div>
 
-  <% @question.comments.each do |c|%>
+  <% @question.comments.reverse.each do |c|%>
     <div class="comment-wrapper">
       <div class="question-box comment-box bubble comment">
         <b>
@@ -52,7 +52,7 @@
         <img class="medium-avatar" src="<%= c.user.avatar_url %>" alt="<%= c.user.name %>">
       </div>
 
-      <div class="reply-wrapper" id="new-reply-box" style="display:none">
+      <div class="reply-wrapper new-reply-box" id="" style="display:none">
         <div class="question-box comment-box bubble reply">
           <br>
           <form action="/replies" method="POST">
@@ -61,6 +61,7 @@
             <textarea name="reply[reply]" id="" cols="30" rows="2"></textarea>
             <input type="submit">
           </form>
+          <a href="#" class="cancel-reply">Cancel</a>
         </div>
         <div class="user-info-question-show reply-user">
           <img class="medium-avatar" src="<%= current_user.avatar_url %>" alt="<%= current_user.name %>">
@@ -68,7 +69,7 @@
       </div>
 
       <div class="reply-container" style="display:none">
-        <% c.replies.each do |r| %>
+        <% c.replies.reverse.each do |r| %>
           <div class="reply-wrapper">
             <div class="question-box comment-box bubble reply">
               <b style="font-size:10pt"><%= r.user.name %> replied:</b> <br>
@@ -93,17 +94,24 @@
 </div>
 
 <script>
+  var slidespeed = 400;
+
   $('body').on('click', '.reply-to-comment', function(event) {
     event.preventDefault();
-    $('#new-reply-box').slideDown('200', function() {
+    $(this).parent().parent().parent().find('.new-reply-box').slideDown(slidespeed, function() {
 
     });
+  });
+
+  $('body').on('click', '.cancel-reply', function(event) {
+    event.preventDefault();
+    $(this).parent().parent().slideUp(slidespeed)
   });
 
   $('body').on('click', '.show-replies', function(event) {
     event.preventDefault();
     var amt = $(this).attr('num');
-    $(this).parent().parent().parent().find('.reply-container').slideDown('300', function() {
+    $(this).parent().parent().parent().find('.reply-container').slideDown(slidespeed, function() {
     });
     $(this).attr('class', 'hide-replies');
     $(this).html('Hide '+amt+' replies');
@@ -112,7 +120,7 @@
   $('body').on('click', '.hide-replies', function(event) {
     var amt = $(this).attr('num');
     event.preventDefault();
-    $(this).parent().parent().parent().find('.reply-container').slideUp('300', function() {
+    $(this).parent().parent().parent().find('.reply-container').slideUp(slidespeed, function() {
     })
     $(this).attr('class', 'show-replies');
     $(this).html('Show '+amt+' replies');
