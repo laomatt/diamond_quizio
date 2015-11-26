@@ -47,6 +47,8 @@ form to submit new category
   <% end %>
 </div>
 
+<%= will_paginate @questions %>
+
 <script>
   $("body").on('click', '.nonapplink', function(event) {
     event.preventDefault();

@@ -2,11 +2,11 @@ class Manage::AdminsController < Manage::BaseController
   def dashboard
   end
   def user_crud
-    @users = User.all
+    @users = User.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def question_crud
-    @questions = Question.select {|e| e.accepted == false}
+    @questions = Question.where(:accepted => false).paginate(:page => params[:page], :per_page => 15)
   end
 
 end

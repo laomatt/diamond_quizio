@@ -3,20 +3,24 @@
 </h1>
 <ul>
 <li class="row">
-  <div class="ro question">Question</div>
-  <div class="ro status">Status</div>
+  <div class="ro question"><b> Question </b></div>
+  <div class="ro status"><b> Status </b></div>
 </li>
 <% @questions.each do |u| %>
 <li class="row">
-  <div class="question">
+
+  <div class="ro question">
   <a href="/manage/questions/<%= u.id %>">
     <%= u.question %>
   </a>
   </div>
-  <div class="status">
+
+  <div class="ro status">
     <%= u.status %>
   </div>
 </li>
 
 <% end %>
 </ul>
+
+<%= will_paginate @questions %>

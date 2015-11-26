@@ -2,7 +2,7 @@ class Manage::QuestionsController < Manage::BaseController
   before_filter :find_question, :except => [:index]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def create

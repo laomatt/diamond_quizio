@@ -1,18 +1,3 @@
-show.html.erb
-
-<br>
-switch user account
-
-<br>
-basic user info
-
-<br>
-quizzes taken
-
-<br>
-analytics
-<hr>
-<br>
 <h3>
   your questions
 </h3>
@@ -27,7 +12,7 @@ analytics
     <% else %>
     <div class="row non-approved-question">
       <%= q.question %>
-      <a href="#" class="nonapplink" qid="<%= q.id %>">Not approved</a>
+      <a href="#" class="nonapplink" qid="<%= q.id %>">Not approved (by: <%= q.disapproval_reason %>)</a>
     </div>
     <div id="non-app-info<%= q.id %>" style="display:none">
       answer: <%= q.real_answer %> <br>
