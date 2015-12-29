@@ -16,50 +16,114 @@ form to submit new category
 
 
 <h3>Current Question pool</h3>
+<form action="/manage/questions/search/filter">
+  question<input name="question" type="text">
+  <input type="submit">
+</form>
+<select name="category" id="category_selector">
+<% Category.all.each do |c| %>
+  <option value="<% c.id %>"><%= c.name %></option>
+<% end %>
+</select>
 
-<div class="question-box">
+<script>
+  $("#category_selector").on('change', function(event) {
+    event.preventDefault();
+    debugger
+  });
+</script>
+
+<div class="question-box" style="width:100%">
+  <div class="row">
+    <div class="col" style="width:20%">User</div>
+    <div class="col">Question</div>
+    <div class="col">status</div>
+    <div class="col">category</div>
+    <div class="col">actions</div>
+  </div>
   <% @questions.each do |q| %>
-    <% if q.accepted %>
-    <div class="row approved-question">
-      <img class="small-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
-      <%= q.question %>
-      <a href="#" class="nonapplink" qid="<%= q.id %>"><font color="white">Approved!</font></a>
-    </div>
+  <div class="row">
+
+  <div class="col">
+    <img class="small-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
+  </div>
+
+<div class="col">
+    <%= q.question %>
+</div>
+
+<div class="col">
+    <a href="#" class="nonapplink" qid="<%= q.id %>"><font color="white"><%= q.status %></font></a>
+</div>
+
+<div class="col">
+    <% if q.category.nil? %>
+    none
     <% else %>
-    <div class="row non-approved-question">
-      <img class="small-avatar" src="<%= q.user.avatar_url %>" alt="<%= q.user.name %>">
-      <%= q.question %>
-      <a href="#" class="nonapplink" qid="<%= q.id %>">Not approved</a>
-    </div>
+    <%= q.category.name  %>
     <% end %>
-    <div id="non-app-info<%= q.id %>" style="display:none">
-      answer: <%= q.real_answer %> <br>
-      dummy answer: <%= q.dummy_answer1 %> <br>
-      dummy answer: <%= q.dummy_answer2 %> <br>
-      dummy answer: <%= q.dummy_answer3 %> <br>
-      <i>
-        citation: <%= q.citation %> <br>
-      </i>
-      <font color="red">
-        <%= q.disapproval_reason %>
-      </font>
-    </div>
+</div>
+
+<div class="col">
+
+    <select name="new_category" class="cat_assignment" qnum="<%= q.id %>">
+      <option value="">pick new topic</option>
+      <% Category.all.each do |ca| %>
+      <option value="<%= ca.id %>"><%= ca.name %></option>
+      <% end %>
+    </select>
+    <a href="#" class="assign" qnum="<%= q.id %>">Assign to category</a>
+    <a href="/manage/questions/<%= q.id %>/trash" class="trash-this">
+      [x]
+    </a>
+</div>
+  </div>
+
+  <div id="non-app-info<%= q.id %>" style="display:none">
+    answer: <%= q.real_answer %> <br>
+    dummy answer: <%= q.dummy_answer1 %> <br>
+    dummy answer: <%= q.dummy_answer2 %> <br>
+    dummy answer: <%= q.dummy_answer3 %> <br>
+    <i>
+      citation: <%= q.citation %> <br>
+    </i>
+    <font color="red">
+      <%= q.disapproval_reason %>
+    </font>
+  </div>
+
+
   <% end %>
 </div>
 
 <%= will_paginate @questions %>
 
 <script>
-  $("body").on('click', '.nonapplink', function(event) {
-    event.preventDefault();
-    var id = $(this).attr('qid');
-    var that = $('#non-app-info' + id);
+$("body").on('click', '.nonapplink', function(event) {
+  event.preventDefault();
+  var id = $(this).attr('qid');
+  var that = $('#non-app-info' + id);
 
-    if(that.css('display') == 'block'){
-      that.slideUp('300', function() {});
-    }
-    else{
-      that.slideDown('300', function() {});
-    }
+  if(that.css('display') == 'block'){
+    that.slideUp('300', function() {});
+  }
+  else{
+    that.slideDown('300', function() {});
+  }
+});
+
+$('body').on('click', '.assign', function(event) {
+    event.preventDefault();
+    var id = $(this).attr('qnum');
+    var cat = $(this).parent().find('select').val()
+    $.ajax({
+      url: '/manage/questions/'+id+'/edit',
+      data: {type: 'assign', new_cat: cat}
+    })
+    .done(function() {
+      console.log("success");
+      location.reload();
+    });
   });
+
 </script>

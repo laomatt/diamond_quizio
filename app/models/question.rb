@@ -13,4 +13,11 @@ class Question < ActiveRecord::Base
     self.update_attributes(:accepted => false, :disapproval_reason => message, :status => message)
   end
 
+  def self.search_question(params)
+    output = Question.all
+    unless params[:question].empty?
+      output = where('question LIKE ?', "%#{params[:question]}%")
+    end
+    output
+  end
 end

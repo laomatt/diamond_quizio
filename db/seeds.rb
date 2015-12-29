@@ -29,7 +29,7 @@ require 'faker'
 
 Question.all.each do |q|
   # q.update_attributes(question: Faker::Lorem.sentence)
-  if q.accepted == false
-    q.update_attributes(status: 'pending')
+  if q.accepted == true
+    q.update_attributes(status: 'approved')
   end
 end

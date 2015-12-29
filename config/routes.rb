@@ -39,6 +39,11 @@ Rails.application.routes.draw do
         get 'trash'
       end
     end
+
+    namespace :questions do
+      namespace :search do
+      end
+    end
     resources :users
   end
 
@@ -56,6 +61,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/manage/questions/search/filter' => 'manage/questions#filter'
   resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.

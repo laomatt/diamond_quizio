@@ -1,12 +1,18 @@
 class Manage::QuestionsController < Manage::BaseController
-  before_filter :find_question, :except => [:index]
+  before_filter :find_question, :except => [:index, :filter]
 
   def index
-    @questions = Question.all.paginate(:page => params[:page], :per_page => 15)
+    @questions = Question.all.paginate(:page => params[:page] || 1, :per_page => 15)
   end
 
   def create
 
+  end
+
+  def filter
+    @questions = Question.search_question(params)
+    @questions = @questions.paginate(:page => params[:page] || 1, :per_page => 15)
+    render :index
   end
 
   def disapprove
@@ -24,6 +30,10 @@ class Manage::QuestionsController < Manage::BaseController
   end
 
   def edit
+    if params[:type] == 'assign'
+      @question.update_attributes(:category_id => params[:new_cat])
+      redirect_to :back
+    end
   end
 
   def show
@@ -32,16 +42,18 @@ class Manage::QuestionsController < Manage::BaseController
 
   def update
     @question.update_attributes(question_params)
-    redirect_to '/manage/admins/question_crud'
+    redirect_to :back
   end
 
   def trash
     @question.update_attributes(:status => "trashed by #{current_user.name}")
-    redirect_to '/manage/admins/question_crud'
+    redirect_to :back
   end
 
   def destroy
+    byebug
     @question.delete
+    redirect_to :back
   end
 
   private
