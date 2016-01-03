@@ -22,7 +22,9 @@
       <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
     <% end %>
   </ul>
-  <ul class="mobile-navigation"></ul>
+  <ul class="mobile-navigation">
+    <%= render '/partials/mobile_navigation' %>
+  </ul>
   <div class="visible-xs mobile-navigation-icon">
     <span></span>
   </div>

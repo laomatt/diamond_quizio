@@ -18,7 +18,7 @@ header {
   .main-logo,
   .navigation {
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 0 0 20px;
   }
 
   .navigation {
@@ -87,6 +87,13 @@ header {
           transform: rotate(-45deg);
         }
       }
+    }
+  }
+
+  .mobile-navigation {
+    display: none;
+    li {
+      display: block;
     }
   }
 
