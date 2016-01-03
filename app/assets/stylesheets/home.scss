@@ -31,6 +31,13 @@ header {
         color: $blue;
       }
     }
+
+    .user {
+      img {
+        border-radius: 50%;
+        width: 40px;
+      }
+    }
   }
 
   .hero-animation {
@@ -39,7 +46,7 @@ header {
     background: linear-gradient(to bottom right, $coral 0%, $pink 100%);
     background-size: cover;
     width: 100%;
-    min-height: 550px;
+    min-height: 560px;
     overflow: hidden;
     position: relative;
 

@@ -4,19 +4,17 @@
   </div>
   <ul class="navigation">
     <% if user_signed_in? %>
-      <li>
+      <li class="user">
         <a href="/user_info/<%= current_user.id %>/show_info">
           <img src="<%= current_user.avatar_url %>" alt="">
-          <%= current_user.name %>
+          <span><%= current_user.name %></span>
         </a>
       </li>
       <li><a href="/questions/new">Submit Trivia</a></li>
       <li><a href="/categories">Browse Quizes</a></li>
       <li><a href="/">Home</a></li>
       <li>
-        <div style="float:right">
-          <a href="/user_log_out_route/sign_out">Log out</a>
-        </div>
+        <a href="/user_log_out_route/sign_out">Log out</a>
       </li>
     <% else %>
       <li><a href="#">About</a></li>
