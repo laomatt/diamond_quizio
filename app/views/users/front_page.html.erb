@@ -2,7 +2,7 @@
   <div class="main-logo">
     <span>Diamond <img src="<%= asset_path( 'diamond-icon.png' ) %>" /> Quizo</span>
   </div>
-  <ul class="navigation">
+  <ul class="navigation hidden-xs">
     <% if user_signed_in? %>
       <li class="user">
         <a href="/user_info/<%= current_user.id %>/show_info">
@@ -22,6 +22,10 @@
       <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
     <% end %>
   </ul>
+  <ul class="mobile-navigation"></ul>
+  <div class="visible-xs mobile-navigation-icon">
+    <span></span>
+  </div>
   <div class="hero-animation">
     <ul class="bg-bubbles">
       <li></li>

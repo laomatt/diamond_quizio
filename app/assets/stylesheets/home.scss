@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'mixins/flex';
+@import 'mixins/helpers';
 
 header {
   border-bottom: 1px solid $light-grey;
@@ -37,6 +38,54 @@ header {
       img {
         border-radius: 50%;
         width: 40px;
+      }
+    }
+  }
+
+  .mobile-navigation-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 30px;
+    padding: 15px;
+    z-index: 10;
+    cursor: pointer;
+
+    span,
+    span::before,
+    span::after {
+      @include transition(all .3sec ease-in-out);
+      border-radius: 3px;
+      width: 25px;
+      height: 3px;
+      position: absolute;
+      display: block;
+      content: '';
+      background: $blue;
+
+    }
+    span::before {
+      top: -7px;
+    }
+
+    span::after {
+      bottom: -7px;
+    }
+
+    &.active {
+      span {
+        background: transparent;
+
+        &::before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          bottom: 0;
+          transform: rotate(-45deg);
+        }
       }
     }
   }
