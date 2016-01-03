@@ -1,0 +1,33 @@
+@import 'variables';
+
+header {
+  .main-logo {
+    color: $blue;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.5em;
+
+    img {
+      width: 60px;
+    }
+  }
+
+  .main-logo,
+  .navigation {
+    display: inline-block;
+    padding: 0 20px;
+  }
+
+  .navigation {
+    float: right;
+    line-height: 60px;
+
+    li {
+      display: inline-block;
+      padding: 0 10px;
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+}
