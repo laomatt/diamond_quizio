@@ -260,7 +260,8 @@ header {
 
 main {
   text-align: center;
-  margin: 100px 0;
+  padding: 100px 0;
+  background: $lighter-grey;
 
   .about-title {
     margin: 20px 0 70px;
