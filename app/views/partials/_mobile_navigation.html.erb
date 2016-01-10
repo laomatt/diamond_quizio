@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <li class="user">
+    <a href="/user_info/<%= current_user.id %>/show_info">
+      <img src="<%= current_user.avatar_url %>" alt="">
+      <span><%= current_user.name %></span>
+    </a>
+  </li>
+  <li><a href="/questions/new">Submit Trivia</a></li>
+  <li><a href="/categories">Browse Quizes</a></li>
+  <li><a href="/">Home</a></li>
+  <li>
+    <a href="/user_log_out_route/sign_out">Log out</a>
+  </li>
+<% else %>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Questions</a></li>
+  <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+<% end %>

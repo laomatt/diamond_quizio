@@ -41,7 +41,6 @@
 }
 
 .body-div {
-  position: relative;
-  width: 75%;
-  margin-left: 20%;
+  /*position: relative;*/
+  left: 20%;
 }

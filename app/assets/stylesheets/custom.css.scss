@@ -1,47 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
+@import "mixins/helpers";
 
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: left;
-}
-
-.question-form-instructions{
-  width:50%;
-  margin-left:5%;
-}
-.question-form-instructions ul{
-	list-style: none;
-}
-
-.question-form-instructions li{
-	margin: 1em 0em;
-}
-
-.question-form{
-  width: 40%;
-  display: block;
-  margin-left: 5%;
-  margin-top: 1%;
-}
-
-.question-form-control{
-  border: 1px solid #bbb;
-  height: 3rem;
-  @include box_sizing;
-}
-
-.new-question-button{
-	margin-top:1rem;
-	margin-left:35%;
 }
 
 /*contact form*/

@@ -1,42 +1,82 @@
-<h1>Question Submission:</h1>
-<div class="question-form-instructions">
-	Use this page to submit a great question for any of our categories that will be used by other quiz takers. Here are the things we like to keep in mind when designing new questions:
-	<ul>
-		<li>MOST IMPORTANT - Create a question based on the book version of the story not a movie / TV show version </li>
-		<li> Try to write questions with one word, person or group per answer (not a sentence)
-		<li>The easiest way to come up with something is read a random chapter from your favorite category and notice interesting themes or events that play into the grand scheme of the story</li>
-		<li>We find one of the best source of question quality comes from great incorrect answers, try looking for details that are easy to confuse or two character theme that are easy to mix up</li>
-		<li>Try to avoid questions about details on fine details about very minor plot points</li>
-		<li>The best questions are the ones where the quiz taker feels like they SHOULD know the answer </li>
-		<li>Make sure you include your citation page number so we can quickly reference and get started on approving your question for our pool.  If the answer is obvious then you don't have to be too specific on your citation, just name the book the information is in, or a web link for confirmation.  Please provide citation at your own discretion.</li>
-	</ul>
-	Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
+<div class="question-submition-instructions">
+	<h1>Question Submission:</h1>
+	<div class="question-submition-container">
+		<p>Use this page to submit a great question for any of our categories that will be used by other quiz takers. Here are the things we like to keep in mind when designing new questions:</p>
+		<ul class="instructions-list">
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">MOST IMPORTANT - Create a question based on the book version of the story not a movie / TV show version</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">Try to write questions with one word, person or group per answer (not a sentence)</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">The easiest way to come up with something is read a random chapter from your favorite category and notice interesting themes or events that play into the grand scheme of the story</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">We find one of the best source of question quality comes from great incorrect answers, try looking for details that are easy to confuse or two character theme that are easy to mix up</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">Try to avoid questions about details on fine details about very minor plot points</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">The best questions are the ones where the quiz taker feels like they SHOULD know the answer</span>
+			</li>
+			<li>
+				<span class="point-circle"><i></i></span>
+				<span class="instruction-rule">Make sure you include your citation page number so we can quickly reference and get started on approving your question for our pool.  If the answer is obvious then you don't have to be too specific on your citation, just name the book the information is in, or a web link for confirmation.  Please provide citation at your own discretion.</span>
+			</li>
+		</ul>
+	</div>
 </div>
-<br>
-<div class="question-form form-group">
-	<%= form_for([@question]) do |f|%>
+<div class="question-submition-quote">
+	<div class="question-submition-container">Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
+	</div>
+</div>
+<div class="question-submition-form">
+	<div class="question-submition-container">
+		<%= form_for([@question]) do |f|%>
 
-	<%= f.label :categories, "Category", class: "question-form-title"%>
-	<%= select("category", "category_id", Category.all.collect {|c| [ c.name, c.id ] }, { include_blank: false }, {:class => "question-form-control form-control"})%><br>
-
-	<%= f.label :question, "Question", class: "question-form-title"%>
-	<%= f.text_field :question, class: "question-form-control form-control"%><br>
-
-	<%= f.label :real_answer, "Answer", class: "question-form-title"%>
-	<%= f.text_field :real_answer, class: "question-form-control form-control" %><br>
-
-	<%= f.label :dummy_answer1, "First Dummy Answer", class: "question-form-title"%>
-	<%= f.text_field :dummy_answer1, class: "question-form-control form-control"%><br>
-
-	<%= f.label :dummy_answer2, "Second Dummy Answer", class: "question-form-title"%>
-	<%= f.text_field :dummy_answer2, class: "question-form-control form-control"%><br>
-
-	<%= f.label :dummy_answer3, "Third Dummy Answer", class: "question-form-title"%>
-	<%= f.text_field :dummy_answer3, class: "question-form-control form-control"%><br>
-
-	<%= f.label :citation, "Citation", class: "question-form-title"%>
-	<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blood Prince, pg.596)", class: "question-form-control form-control"%>
-
-	<%= f.submit "Submit Question", class: "new-question-button btn btn-primary"%>
-	<% end %>
+		<div class="form-section">
+			<%= f.label :categories, "Category", class: "question-form-title"%>
+			<%= select("category", "category_id", Category.all.collect {|c| [ c.name, c.id ] }, { include_blank: false }, {:class => "question-form-control form-control"})%>
+		</div>
+		<div class="form-section">
+			<%= f.label :question, "Question", class: "question-form-title"%>
+			<%= f.text_field :question, class: "question-form-control form-control"%><br>
+		</div>
+		<div class="form-section">
+			<%= f.label :real_answer, "Answer", class: "question-form-title"%>
+			<%= f.text_field :real_answer, class: "question-form-control form-control" %><br>
+		</div>
+		<div class="form-section">
+			<%= f.label :dummy_answer1, "First Dummy Answer", class: "question-form-title"%>
+			<%= f.text_field :dummy_answer1, class: "question-form-control form-control"%><br>
+		</div>
+		<div class="form-section">
+			<%= f.label :dummy_answer2, "Second Dummy Answer", class: "question-form-title"%>
+			<%= f.text_field :dummy_answer2, class: "question-form-control form-control"%><br>
+		</div>
+		<div class="form-section">
+			<%= f.label :dummy_answer3, "Third Dummy Answer", class: "question-form-title"%>
+			<%= f.text_field :dummy_answer3, class: "question-form-control form-control"%><br>
+		</div>
+		<div class="form-section">
+			<%= f.label :citation, "Citation", class: "question-form-title"%>
+			<%= f.text_field :citation, :placeholder => "(book, page number) eg (Half Blood Prince, pg.596)", class: "question-form-control form-control"%>
+		</div>
+		<div class="form-section"></div>
+		<%= f.submit "Submit Question", class: "submit-button"%>
+		<% end %>
+	</div>
+</div>
+<div class="contact-us">
+	<div class="question-submition-container">
+		Contact us: <a href="mailto:something@gmail.com">diamondteam@gmail.com</a>
+	</div>
 </div>

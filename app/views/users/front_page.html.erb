@@ -1,16 +1,77 @@
-
-<div class="front-page-content">
-  This site is for sharing great trivia questions about our favorite popular narratives.<br>
-<ol>
-  <li>Create great questions to challenge other users</li>
-  <li>Take quizzes based on questions created by other users</li>
-  <li>Share your scores and see how your friends do on their own quizzes</li>
-</ol>
-
+<div class="hero-animation">
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <h2 class="hero-text">This site is for sharing great trivia questions about our favorite popular narratives.</h2>
 </div>
+<main>
+  <h2 class="about-title">What's Great About This App</h2>
+  <ul class="about-app">
+    <li class="create-questions">
+      <figure>
+        <!-- this should be img tag later -->
+        <div class="about-image"></div>
+        <figcaption>Create great questions to challenge other users</figcaption>
+      </figure>
+    </li>
+    <li class="take-quizes">
+      <figure>
+        <!-- this should be img tag later -->
+        <div class="about-image"></div>
+        <figcaption>Take quizzes based on questions created by other users</figcaption>
+      </figure>
+    </li>
+    <li class="share-scores">
+      <figure>
+        <!-- this should be img tag later -->
+        <div class="about-image"></div>
+        <figcaption>Share your scores and see how your friends do on their own quizzes</figcaption>
+      </figure>
+    </li>
+  </ul>
+</main>
 
-
-
+<% if current_user %>
+ <% if current_user.admin? %>
+  <div class="admin-box">
+    <li>
+      <a href="#" class="drop-admin-box">Admin controls</a>
+    </li>
+    <ul class="admin-links" style="display:none;">
+      <li>
+        <a href="/manage/questions">question pool</a>
+      |</li>
+      <li>
+        <a href="/manage/admins/question_crud">
+          pending questions
+        </a>
+      |</li>
+      <li>
+        <a href="/manage/admins/user_crud">
+          users control
+        </a>
+      |</li>
+      <li>
+        <a href="/manage/admins/dashboard">admin dashboard</a>
+      |</li>
+      <div style="float:right">
+        <a href="#" class="close-admin-box">
+          [x]
+        </a>
+      </div>
+    </ul>
+  </div>
+  <% end %>
+<% end %>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
