@@ -1,49 +1,18 @@
-<header>
-  <div class="main-logo">
-    <span>Diamond <img src="<%= asset_path( 'diamond-icon.png' ) %>" /> Quizo</span>
-  </div>
-  <ul class="navigation hidden-xs">
-    <% if user_signed_in? %>
-      <li class="user">
-        <a href="/user_info/<%= current_user.id %>/show_info">
-          <img src="<%= current_user.avatar_url %>" alt="">
-          <span><%= current_user.name %></span>
-        </a>
-      </li>
-      <li><a href="/questions/new">Submit Trivia</a></li>
-      <li><a href="/categories">Browse Quizes</a></li>
-      <li><a href="/">Home</a></li>
-      <li>
-        <a href="/user_log_out_route/sign_out">Log out</a>
-      </li>
-    <% else %>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Questions</a></li>
-      <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
-    <% end %>
+<div class="hero-animation">
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
   </ul>
-  <ul class="mobile-navigation">
-    <%= render '/partials/mobile_navigation' %>
-  </ul>
-  <div class="visible-xs mobile-navigation-icon">
-    <span></span>
-  </div>
-  <div class="hero-animation">
-    <ul class="bg-bubbles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-    <h2 class="hero-text">This site is for sharing great trivia questions about our favorite popular narratives.</h2>
-  </div>
-</header>
+  <h2 class="hero-text">This site is for sharing great trivia questions about our favorite popular narratives.</h2>
+</div>
 <main>
   <h2 class="about-title">What's Great About This App</h2>
   <ul class="about-app">
@@ -103,9 +72,6 @@
   </div>
   <% end %>
 <% end %>
-<footer>
-  &copy; Diamond Quizo team, 2016
-</footer>
 <script>
   window.fbAsyncInit = function() {
     FB.init({

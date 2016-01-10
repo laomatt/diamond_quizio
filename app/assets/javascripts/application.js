@@ -19,7 +19,7 @@
 $(document).on('ready', function(){
   $('.mobile-navigation-icon').on('click', function(){
     $(this).toggleClass('active');
-    console.log('we;')
+    $('.mobile-navigation').toggle();
   });
 });
 
