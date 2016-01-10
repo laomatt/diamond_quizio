@@ -1,0 +1,126 @@
+@import 'variables';
+@import 'mixins/flex';
+@import 'mixins/helpers';
+
+.question-submition-container {
+  padding: 60px 0;
+  margin: 0 auto;
+  width: 90%;
+
+  @media(min-width: 767px) {
+    width: 70%;
+  }
+}
+
+.question-submition-instructions {
+  background: $lighter-grey;
+  font-size: 18px;
+
+  h1 {
+    text-align: center;
+    padding: 60px 0 20px;
+    margin: 0;
+    font-family: 'Fjalla One', sans-serif;
+  }
+
+  .instructions-list {
+    @include display(flex);
+    @include flex-flow(row wrap);
+
+    li {
+      padding: 20px 10px;
+      width: 100%;
+
+      @media(min-width: 600px) {
+        &:not(:last-child) {
+          width: 50%;
+        }
+      }
+
+      span {
+        display: inline-block;
+        padding: 10px;
+      }
+
+      .point-circle {
+        background: $light-green;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        vertical-align: top;
+
+        i {
+          background: url('svg/quill.svg');
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .instruction-rule {
+        width: 75%;
+      }
+    }
+  }
+}
+
+.question-submition-quote {
+  background: $dark-green-blue;
+  color: $white;
+  font-size: 25px;
+  font-family: 'Fjalla One', sans-serif;
+  margin-top: -10px;
+  padding: 30px;
+}
+
+.question-submition-form {
+  background: $lighter-grey;
+
+  form {
+    @include display(flex);
+    @include flex-flow(row wrap);
+    position: relative;
+    margin-bottom: 80px;
+
+    .form-section {
+      width: 100%;
+      padding: 0 25px;
+
+      @media(min-width: 767px) {
+        width: 50%;
+      }
+    }
+
+    .submit-button {
+      transform: translate(-50%);
+      position: absolute;
+      left: 50%;
+      bottom: -80px;
+      background: $blue;
+      border-radius: 5px;
+      border: none;
+      color: $white;
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+  }
+}
+
+.contact-us {
+  background: $white;
+  font-size: 20px;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: $blue;
+    font-size: 25px;
+  }
+}
+// .shape {
+//   background: linear-gradient(110deg, transparent 0%, transparent 60%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 100%), linear-gradient(-160deg, transparent 0%, transparent 60%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 100%);
+//   background-size: 300px 300px;
+//   background-color: $blue;
+//   padding: 20px;
+//   text-align: center;
+// }
