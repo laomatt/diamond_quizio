@@ -11,6 +11,32 @@
 
 <body>
   <header>
+<% if current_user %>
+ <% if current_user.admin? %>
+  <div class="admin-box">
+    <ul class="admin-links">
+      <li>
+        <a href="/manage/questions">question pool</a>
+      |</li>
+      <li>
+        <a href="/manage/admins/question_crud">
+          pending questions
+        </a>
+      |</li>
+      <li>
+        <a href="/manage/admins/user_crud">
+          users control
+        </a>
+      |</li>
+      <li>
+        <a href="/manage/admins/dashboard">
+          admin dashboard
+        </a>
+      </li>
+    </ul>
+  </div>
+  <% end %>
+<% end %>
     <div class="main-logo">
       <span>Diamond <img src="<%= asset_path( 'diamond-icon.png' ) %>" /> Quizo</span>
     </div>
@@ -42,6 +68,16 @@
     </div>
   </header>
   <div class="body-div">
+    <% if flash[:notice] %>
+      <div class="flash" style="background-color:red;color:white;text-align:center">
+        <%= flash[:notice] %>
+      </div>
+      <script>
+        setTimeout(function(){
+          $(".flash").fadeOut('300', function() {});
+        }, 4000);
+      </script>
+    <% end %>
     <%= yield %>
   </div>
   <footer>

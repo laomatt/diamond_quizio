@@ -12,16 +12,23 @@ class Manage::QuestionsController < Manage::BaseController
   def filter
     @questions = Question.search_question(params)
     @questions = @questions.paginate(:page => params[:page] || 1, :per_page => 15)
-    render :index
+    if params[:from] == "question_crud"
+      render '/manage/admins/question_crud'
+    else
+      render :index
+    end
   end
 
   def disapprove
     @question.disapprove(params[:disapproval_reason], current_user)
+    flash[:notice] = "#{@question.id} was disapproved"
     redirect_to '/manage/admins/question_crud'
   end
 
   def approve
     @question.approve
+    flash[:notice] = "#{@question.id} was approved"
+    @question.update_attributes(:status => "approved by #{current_user.name}")
     redirect_to '/manage/admins/question_crud'
   end
 
@@ -46,8 +53,10 @@ class Manage::QuestionsController < Manage::BaseController
   end
 
   def trash
+    @question.trash
     @question.update_attributes(:status => "trashed by #{current_user.name}")
-    redirect_to :back
+    flash[:notice] = "#{@question.id} was trashed"
+    redirect_to '/manage/admins/question_crud'
   end
 
   def destroy

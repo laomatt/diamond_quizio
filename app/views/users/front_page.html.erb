@@ -40,38 +40,7 @@
   </ul>
 </main>
 
-<% if current_user %>
- <% if current_user.admin? %>
-  <div class="admin-box">
-    <li>
-      <a href="#" class="drop-admin-box">Admin controls</a>
-    </li>
-    <ul class="admin-links" style="display:none;">
-      <li>
-        <a href="/manage/questions">question pool</a>
-      |</li>
-      <li>
-        <a href="/manage/admins/question_crud">
-          pending questions
-        </a>
-      |</li>
-      <li>
-        <a href="/manage/admins/user_crud">
-          users control
-        </a>
-      |</li>
-      <li>
-        <a href="/manage/admins/dashboard">admin dashboard</a>
-      |</li>
-      <div style="float:right">
-        <a href="#" class="close-admin-box">
-          [x]
-        </a>
-      </div>
-    </ul>
-  </div>
-  <% end %>
-<% end %>
+
 <script>
   window.fbAsyncInit = function() {
     FB.init({

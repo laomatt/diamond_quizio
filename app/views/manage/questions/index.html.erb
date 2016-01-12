@@ -1,35 +1,38 @@
-index.html.erb
 
-<br>
-
-question list
-
-<br>
-analytics for all approved questions currently in circulation
-
-<br>
-
-category list
-
-<br>
-form to submit new category
-
+<div class="future-features">
+  <br>
+  analytics for all approved questions currently in circulation
+  <br>
+  category list
+  <br>
+  form to submit new category
+</div>
 
 <h3>Current Question pool</h3>
 <form action="/manage/questions/search/filter">
   question<input name="question" type="text">
-  <input type="submit">
+  <input type="hidden" name="from" value="index">
+  <input type="submit" value="Search">
 </form>
 <select name="category" id="category_selector">
+  <option value="">pick category</option>
 <% Category.all.each do |c| %>
-  <option value="<% c.id %>"><%= c.name %></option>
+  <option value="<%= c.id %>"><%= c.name %></option>
 <% end %>
 </select>
+
+<form action="/manage/questions/search/filter" id="selector-form-info">
+  question<input name="category_id" type="hidden" id="select-cat-text">
+  <input type="hidden" name="from" value="index">
+</form>
 
 <script>
   $("#category_selector").on('change', function(event) {
     event.preventDefault();
-    debugger
+    var cat = $(this).val();
+    $("#select-cat-text").val(cat);
+    $("#selector-form-info").trigger('submit');
+
   });
 </script>
 
