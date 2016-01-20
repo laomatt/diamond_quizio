@@ -1,20 +1,7 @@
-  <div class="fblogin">
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-  </div>
-<div class="hero-animation">
-  <ul class="bg-bubbles">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-  <h2 class="hero-text">This site is for sharing great trivia questions about our favorite popular narratives.</h2>
+<div class="hero-image">
+  <h1 class="hero-text">This site is for sharing great trivia questions about our favorite popular narratives.</h1>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => "fblogin" %>
+
 </div>
 <main>
   <h2 class="about-title">What's Great About This App</h2>
@@ -22,21 +9,21 @@
     <li class="create-questions">
       <figure>
         <!-- this should be img tag later -->
-        <div class="about-image"></div>
+        <i class="about-ask"></i>
         <figcaption>Create great questions to challenge other users</figcaption>
       </figure>
     </li>
     <li class="take-quizes">
       <figure>
         <!-- this should be img tag later -->
-        <div class="about-image"></div>
+        <i class="about-quiz"></i>
         <figcaption>Take quizzes based on questions created by other users</figcaption>
       </figure>
     </li>
     <li class="share-scores">
       <figure>
         <!-- this should be img tag later -->
-        <div class="about-image"></div>
+        <i class="about-rank"></i>
         <figcaption>Share your scores and see how your friends do on their own quizzes</figcaption>
       </figure>
     </li>
