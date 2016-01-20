@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   layout 'public', :except => :front_page
 
   def front_page
+    if current_user
+      redirect_to "/users/show"
+    end
   end
 
   def show
