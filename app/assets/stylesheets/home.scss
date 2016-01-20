@@ -128,10 +128,11 @@ header {
 }
 
 .hero-image {
-  background: url('game-background.jpeg') no-repeat center left fixed;
+  background: url('sf-animated.png') no-repeat top center fixed;
   background-size: cover;
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 750px;
 
   &::after {
     content: '';
