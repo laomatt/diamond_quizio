@@ -143,12 +143,28 @@ header {
     opacity: 0.4;
     top: 0;
   }
+
+  .fblogin {
+    @include transition(all 0.3s ease-in-out);
+    background: $white;
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+
+    &:hover {
+      background: #A6CED5;
+      color: $white;
+      text-decoration: none;
+    }
+  }
 }
 
 .hero-text {
   position: absolute;
   color: white;
-  font-style: italic;
   width: 90%;
   text-align: center;
   top: 38%;
