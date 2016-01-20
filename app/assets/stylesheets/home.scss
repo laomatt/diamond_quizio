@@ -313,6 +313,30 @@ main {
       figure {
         max-width: 230px;
 
+        .about-ask {
+          background: url('svg/ask.svg') no-repeat;
+          background-size: cover;
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+        }
+
+        .about-quiz {
+          background: url('svg/quiz.svg') no-repeat;
+          background-size: cover;
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+        }
+
+        .about-rank {
+          background: url('svg/rank.svg') no-repeat;
+          background-size: cover;
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+        }
+
         figcaption {
           padding: 20px 0;
         }
