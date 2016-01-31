@@ -1,7 +1,7 @@
 class Manage::BaseController < ApplicationController
   before_filter :authenticate_user!
   before_filter :check_admin
-  layout 'public'
+  layout 'admin'
 
   protected
 

@@ -10,32 +10,6 @@
 </head>
 
   <header>
-<% if current_user %>
- <% if current_user.admin? %>
-  <div class="admin-box">
-    <ul class="admin-links">
-      <li>
-        <a href="/manage/questions">question pool</a>
-      |</li>
-      <li>
-        <a href="/manage/admins/question_crud">
-          pending questions
-        </a>
-      |</li>
-      <li>
-        <a href="/manage/admins/user_crud">
-          users control
-        </a>
-      |</li>
-      <li>
-        <a href="/manage/admins/dashboard">
-          admin dashboard
-        </a>
-      </li>
-    </ul>
-  </div>
-  <% end %>
-<% end %>
     <div class="main-logo">
       <a href="/"><img src="<%= asset_path( 'diamond-icon.png' ) %>" /></a>
     </div>

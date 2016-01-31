@@ -1,6 +1,26 @@
 <div class="question-submition-instructions">
+
+<div style="width:100%;background-color:transparent;text-align:center">
 	<h1>Question Submission:</h1>
-	<div class="question-submition-container">
+	<a href="#" class="instructions-drop-down">Click here for instructions</a>
+</div>
+	<script>
+		$("body").on('click', '.instructions-drop-down', function(event) {
+			event.preventDefault();
+			var that = $(this)
+			if($("#instruction-container").css('display') == 'block'){
+				$("#instruction-container").slideUp('400', function() {
+					that.text("Show instructions")
+				});
+
+			} else {
+				$("#instruction-container").slideDown('400', function() {
+					that.text("Hide instructions")
+				});
+			}
+		});
+	</script>
+	<div class="question-submition-container" id="instruction-container" style="display:none">
 		<p>Use this page to submit a great question for any of our categories that will be used by other quiz takers. Here are the things we like to keep in mind when designing new questions:</p>
 		<ul class="instructions-list">
 			<li>
@@ -34,10 +54,7 @@
 		</ul>
 	</div>
 </div>
-<div class="question-submition-quote">
-	<div class="question-submition-container">Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
-	</div>
-</div>
+
 <div class="question-submition-form">
 	<div class="question-submition-container">
 		<%= form_for([@question]) do |f|%>
@@ -74,6 +91,11 @@
 		<%= f.submit "Submit Question", class: "submit-button"%>
 		<% end %>
 	</div>
+
+<div class="question-submition-quote">
+	<div class="question-submition-container">Have fun and we can't wait to see your great questions. We review every question and will reach out to you about feedback to see how we might be able to improve your question or let you know it was spot on originally.
+	</div>
+</div>
 </div>
 <div class="contact-us">
 	<div class="question-submition-container">
