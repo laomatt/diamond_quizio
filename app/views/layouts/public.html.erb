@@ -16,7 +16,7 @@
     <ul class="navigation hidden-xs">
       <% if user_signed_in? %>
         <li class="user">
-          <a href="/user_info/<%= current_user.id %>/show_info">
+          <a href="/user_info/me">
             <img src="<%= current_user.avatar_url %>" alt="">
             <span><%= current_user.name %></span>
           </a>

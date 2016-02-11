@@ -1,0 +1,69 @@
+      <div class="container_wrapper" style="height: 600px;overflow: scroll;">
+
+
+<div class="profile-info-box" style="float:left;width:25%;position:relative;padding:5%">
+  <img src="<%= @user.avatar_url %>" class="profile-pic">
+  <hr>
+  <%= @user.name %>
+  <style>
+    .profile-pic {
+      width: 50px;
+    }
+  </style>
+</div>
+
+
+
+
+<div class="question-box" style="background-color:white;color:black;float:right;width:70%;position:relative">
+
+  <h3>
+     Questions
+  </h3>
+  <% @questions.each do |q| %>
+    <% if q.accepted %>
+    <div class="row approved-question">
+      <%= q.question %>
+      <font color="white">Approved!</font>
+    </div>
+    <% else %>
+    <div class="row non-approved-question">
+      <%= q.question %>
+      <a href="#" class="nonapplink" qid="<%= q.id %>">Not approved (by: <%= q.disapproval_reason %>)</a>
+    </div>
+    <div id="non-app-info<%= q.id %>" style="display:none">
+      answer: <%= q.real_answer %> <br>
+      dummy answer: <%= q.dummy_answer1 %> <br>
+      dummy answer: <%= q.dummy_answer2 %> <br>
+      dummy answer: <%= q.dummy_answer3 %> <br>
+      <i>
+        citation: <%= q.citation %> <br>
+      </i>
+      <font color="red">
+        <%= q.disapproval_reason %>
+      </font>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+</div>
+
+<script>
+  $("body").on('click', '.nonapplink', function(event) {
+    event.preventDefault();
+    var id = $(this).attr('qid');
+    var that = $('#non-app-info' + id);
+
+    if(that.css('display') == 'block'){
+      that.slideUp('300', function() {});
+    }
+    else{
+      that.slideDown('300', function() {});
+    }
+  });
+</script>

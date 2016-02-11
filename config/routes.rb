@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :replies
 
   get 'user_info/:id/show_info' => "users#show"
+  get 'user_info/me' => "users#me"
 
   devise_for :users, controllers: {
     sessions: 'devise/sessions',
