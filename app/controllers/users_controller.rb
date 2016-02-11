@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def front_page
     if current_user
-      redirect_to "/users/show"
+      redirect_to "/user_info/me"
     end
   end
 
