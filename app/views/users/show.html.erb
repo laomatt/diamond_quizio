@@ -1,8 +1,25 @@
-<h3>
-  your questions
-</h3>
+      <div class="container_wrapper" style="height: 600px;overflow: scroll;">
 
-<div class="question-box">
+
+<div class="profile-info-box" style="float:left;width:25%;position:relative;padding:5%">
+  <img src="<%= @user.avatar_url %>" class="profile-pic">
+  <hr>
+  <%= @user.name %>
+  <style>
+    .profile-pic {
+      width: 50px;
+    }
+  </style>
+</div>
+
+
+
+
+<div class="question-box" style="background-color:white;color:black;float:right;width:70%;position:relative">
+
+  <h3>
+     Questions
+  </h3>
   <% @questions.each do |q| %>
     <% if q.accepted %>
     <div class="row approved-question">
@@ -28,6 +45,12 @@
     </div>
     <% end %>
   <% end %>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
 </div>
 
 <script>
