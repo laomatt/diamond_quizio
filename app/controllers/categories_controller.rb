@@ -26,7 +26,16 @@ class CategoriesController < ApplicationController
     end
     @score.update_attributes(:questions => qs.to_json)
     nums = [0,1,2,3,4,5,6,7,8,9]
-    score = nums.map { |e| params['score']["ans#{e}"] == 'right' }.count{|e| e == true}
+    score = 0
+    nums.each do |q|
+      question = qs[q]
+      if params['score']["ans#{q}"] == 'right'
+        QuestionStat.create(:correct => true, :question_id => question.id, :user_id => current_user.id)
+        score += 1
+      else
+        QuestionStat.create(:correct => false, :question_id => question.id, :user_id => current_user.id)
+      end
+    end
     @score.update_attributes(:score => score)
 
     redirect_to "/categories/#{@score.id}/score"

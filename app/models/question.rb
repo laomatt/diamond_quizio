@@ -1,8 +1,11 @@
 class Question < ActiveRecord::Base
   belongs_to :quiz
   belongs_to :user
+
   belongs_to :category
   has_many :comments
+
+  has_many :question_stats
 
   def approve
     self.update_attributes(:accepted => true)

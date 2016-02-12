@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :replies
 
+  has_many :question_stats
+
+
   def self.from_omniauth(auth)
     if User.exists?(:email => auth.info.email)
       user = User.find_by_email(auth.info.email)
