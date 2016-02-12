@@ -1,0 +1,39 @@
+
+<h1>
+  Edit: <%= @category.name %>
+</h1>
+<hr>
+<form action="/manage/categories/update/<%= @category.id %>" method="PATCH">
+ <ul>
+  <li>
+    <label for="name">Name</label>
+    <input type="text" name="name">
+  </li>
+  <li>
+    <label for="image_url">Image</label>
+    <input type="text" name="image_url">
+  </li>
+   <li>
+    <label for="ranking[a]">Top Scorer rank</label>
+    <input type="text" name="rankings[a]">
+   </li>
+   <li>
+    <label for="ranking[b]">B rank</label>
+    <input type="text" name="rankings[b]">
+   </li>
+   <li>
+    <label for="ranking[c]">C rank</label>
+    <input type="text" name="rankings[c]">
+   </li>
+   <li>
+    <label for="ranking[d]">D rank</label>
+    <input type="text" name="rankings[d]">
+   </li>
+   <li>
+    <label for="ranking[f]">F rank</label>
+    <input type="text" name="rankings[f]">
+   </li>
+ </ul>
+
+</form>
+

@@ -11,6 +11,12 @@ dashboard.html.erb
 </form>
 
 <h3>Current categories</h3>
+<ul>
+
 <% Category.all.each do |c| %>
-<%= c.name %><br>
+<li>
+  <a href="/manage/categories/<%= c.id %>/show"><%= c.name %></a>
+</li>
+
 <% end %>
+</ul>

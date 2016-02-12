@@ -1,0 +1,9 @@
+<ul>
+
+<% @cat.each do |c| %>
+<li>
+  <a href="/manage/categories/<%= c.id %>/show"><%= c.name %></a>
+</li>
+
+<% end %>
+</ul>

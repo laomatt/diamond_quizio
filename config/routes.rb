@@ -33,6 +33,13 @@ Rails.application.routes.draw do
       get 'question_crud'
     end
 
+    resources :categories do
+      member do
+        get 'show'
+        get 'index'
+      end
+    end
+
     resources :questions do
       member do
         get 'approve'
