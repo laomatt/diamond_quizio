@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   def tabulate_scores
   	@category = Category.find(params[:id])
     @ques = JSON.parse(params[:question_list])
-    @score = QuizScore.create(:user_id => current_user, :category_id => @category.id)
+    @score = QuizScore.create(:user_id => current_user.id, :category_id => @category.id)
     qs = []
     @ques.each do |f|
       qs << Question.find(f)
@@ -34,6 +34,7 @@ class CategoriesController < ApplicationController
 
   def score
     @score = QuizScore.find(params[:id])
+    @user = @score.user
   end
 
   private
