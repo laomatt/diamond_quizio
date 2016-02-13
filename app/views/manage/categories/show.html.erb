@@ -3,37 +3,39 @@
   Edit: <%= @category.name %>
 </h1>
 <hr>
-<form action="/manage/categories/update/<%= @category.id %>" method="PATCH">
+<form action="/manage/categories/<%= @category.id %>/update" method="POST"  style="float:left; width:50%">
  <ul>
   <li>
     <label for="name">Name</label>
-    <input type="text" name="name">
+    <input type="text" name="edit[name]" value="<%= @category.name %>">
   </li>
   <li>
     <label for="image_url">Image</label>
-    <input type="text" name="image_url">
+    <input type="text" name="edit[image_url]" value="<%= @category.image_url %>">
   </li>
    <li>
     <label for="ranking[a]">Top Scorer rank</label>
-    <input type="text" name="rankings[a]">
+    <input type="text" name="rankings[a]" value="<%= @ranks['a'] %>">
    </li>
    <li>
     <label for="ranking[b]">B rank</label>
-    <input type="text" name="rankings[b]">
+    <input type="text" name="rankings[b]" value="<%= @ranks['b'] %>">
    </li>
    <li>
     <label for="ranking[c]">C rank</label>
-    <input type="text" name="rankings[c]">
+    <input type="text" name="rankings[c]" value="<%= @ranks['c'] %>">
    </li>
    <li>
     <label for="ranking[d]">D rank</label>
-    <input type="text" name="rankings[d]">
+    <input type="text" name="rankings[d]" value="<%= @ranks['d'] %>">
    </li>
    <li>
     <label for="ranking[f]">F rank</label>
-    <input type="text" name="rankings[f]">
+    <input type="text" name="rankings[f]" value="<%= @ranks['f'] %>">
    </li>
  </ul>
-
+<input type="submit">
 </form>
+
+  <img src="<%= @category.image_url %>"  style="float:right; width:50%">
 

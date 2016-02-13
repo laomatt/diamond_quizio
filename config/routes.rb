@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       member do
         get 'show'
         get 'index'
+        post 'update'
       end
     end
 
