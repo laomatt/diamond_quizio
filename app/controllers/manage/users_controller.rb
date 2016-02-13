@@ -17,7 +17,7 @@ class Manage::UsersController < Manage::BaseController
   end
 
   def show
-
+    @questions = @user.questions
   end
 
   def update
