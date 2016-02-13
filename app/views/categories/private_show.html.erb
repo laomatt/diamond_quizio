@@ -1,0 +1,41 @@
+<div class="catewrapper" style="background:url(<%= @category.image_url %>); width:100%;padding:10%">
+
+
+  <div class="question-submition-container" style="background-color:black;padding:10%;color:white">
+    <h1>Submit a trvia peice for <%= @category.name %></h1>
+    <form class="new_question" id="new_question" action="/questions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="form-section">
+        <input type="hidden" class="question-form-control form-control" name="category[category_id]" id="category_category_id" value="<%= @category.id %>">
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_question">Question</label>
+        <input class="question-form-control form-control" type="text" name="question[question]" id="question_question"><br>
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_real_answer">Answer</label>
+        <input class="question-form-control form-control" type="text" name="question[real_answer]" id="question_real_answer"><br>
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_dummy_answer1">First Dummy Answer</label>
+        <input class="question-form-control form-control" type="text" name="question[dummy_answer1]" id="question_dummy_answer1"><br>
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_dummy_answer2">Second Dummy Answer</label>
+        <input class="question-form-control form-control" type="text" name="question[dummy_answer2]" id="question_dummy_answer2"><br>
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_dummy_answer3">Third Dummy Answer</label>
+        <input class="question-form-control form-control" type="text" name="question[dummy_answer3]" id="question_dummy_answer3"><br>
+      </div>
+      <div class="form-section">
+        <label class="question-form-title" for="question_citation">Citation</label>
+        <input placeholder="(book, page number) eg (Half Blood Prince, pg.596)" class="question-form-control form-control" type="text" name="question[citation]" id="question_citation">
+      </div>
+      <div class="form-section"></div>
+      <hr>
+      <input type="submit" name="commit" value="Submit Question" class="submit-button">
+    </form>
+  </div>
+
+</div>

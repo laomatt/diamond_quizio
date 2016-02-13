@@ -1,0 +1,10 @@
+<div class="hero-image" style="background:url(<%= @category.image_url %>)">
+  <div class="fb-splash">
+    <h1 class="hero-text">
+      Make trivia, play trivia for <%= @category.name %>
+      <br>
+      <hr>
+      <a class="fblogin" href="/users/auth/facebook?cat=<%= @category.id %>">Sign in with Facebook</a>
+    </h1>
+  </div>
+</div>

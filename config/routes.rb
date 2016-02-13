@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'categories/show'
 
+  get 'users/sign_in' => 'users#sign_in'
+
   root 'users#front_page'
 
   resources :users do
@@ -67,6 +69,8 @@ Rails.application.routes.draw do
     member do
       get 'score'
       get 'tabulate_scores'
+      get 'public_show'
+      get 'private_show'
     end
   end
 

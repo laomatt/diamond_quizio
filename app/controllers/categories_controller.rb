@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
-  layout 'public'
+  layout 'public', :except => [:public_show]
   skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user!, :only => [:public_show]
   def index
   	@categories = Category.all
   end
@@ -8,6 +9,17 @@ class CategoriesController < ApplicationController
   def create
     Category.create(category_params)
     redirect_to :back
+  end
+
+  def public_show
+    @category = Category.find(params[:id])
+    if current_user
+      redirect_to "/categories/#{@category.id}/private_show"
+    end
+  end
+
+  def private_show
+    @category = Category.find(params[:id])
   end
 
   def show
