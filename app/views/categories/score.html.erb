@@ -1,21 +1,26 @@
 
-<div class="score-container">
+<div class="score-container" image="<%= @category.image_url %>">
 
 <img src="<%= @user.avatar_url %>" alt="">
 <h3>
-<%= @user.name %>, you have scored <%= @score.score %>
+<%= @user.name %>, you have scored <%= @score.score %> out of <%= @score.total %>
 </h3>
 
+<h5>You are a <%= @rank %></h5>
 <h5>Tell your friends on facebook!</h5>
 
 </div>
 
+<script>
+var image = $('.score-container').attr('image');
+  $(".content").css('background', 'url('+image+')');
+</script>
 
 <style>
   .score-container {
     padding: 5%;
     text-align: center;
-    background-color: rgba(0, 255, 163, 0.23);
+    background-color: white;
     position: relative;
     top: 3%;
     margin-top: 4%;
