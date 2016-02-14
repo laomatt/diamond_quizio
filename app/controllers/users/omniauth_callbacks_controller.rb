@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
-      if params[:cat]
+      if !params[:cat].nil?
         @path = "/categories/#{params[:cat]}/private_show"
         sign_in_and_redirect @user, :event => :authentication
       else
