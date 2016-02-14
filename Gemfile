@@ -54,7 +54,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'ruby', '~> 2.1.3'
   gem 'pg'
 end
 
