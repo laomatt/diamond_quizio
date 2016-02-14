@@ -8,12 +8,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       if !params[:cat].nil?
         @path = "/categories/#{params[:cat]}/private_show"
-        sign_in_and_redirect @user, :event => :authentication
       else
         @path = "/user_info/me"
-        sign_in_and_redirect @user, :event => :authentication
       end
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
+      sign_in_and_redirect @user, :event => :authentication
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url

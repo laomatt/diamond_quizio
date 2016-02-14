@@ -20,6 +20,9 @@ class CategoriesController < ApplicationController
 
   def private_show
     @category = Category.find(params[:id])
+    if !current_user
+      redirect_to "/categories/#{@category.id}/public_show"
+    end
   end
 
   def show
