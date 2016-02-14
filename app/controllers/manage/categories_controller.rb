@@ -10,7 +10,7 @@ class Manage::CategoriesController < Manage::BaseController
   end
 
   def show
-    if @category.rankings != "null"
+    if( @category.rankings != "null") && ( !@category.rankings.nil? )
       @ranks = JSON.parse(@category.rankings)
     else
       @ranks = {:a => 'a', :b => 'b', :c => 'c', :d => 'd', :f => 'f'}
