@@ -56,6 +56,65 @@
 </div>
 
 <div class="question-submition-form">
+
+<h2>Current categories</h2>
+<div class="cat-box-holder">
+
+  <% Category.all.each do |individual_category|%>
+  <a href="/categories/<%= individual_category.id %>/private_show">
+    <div class="panel cate-box" style="background:url(<%= individual_category.thumbnail_url %>) no-repeat center center">
+      <div class="title" style="display:none"><%= individual_category.name %></div>
+    </div>
+  </a>
+  <%end%>
+<%= link_to "Submit a Question for Review", new_question_path%>
+
+<script>
+$("body").on('mouseover', '.cate-box', function(event) {
+  event.preventDefault();
+  $(this).find('.title').fadeIn(400, function() {
+
+  });
+});
+
+$("body").on('mouseout', '.cate-box', function(event) {
+  event.preventDefault();
+  $(this).find('.title').fadeOut(400, function() {
+
+  });
+});
+
+</script>
+
+<style>
+.cate-box {
+  position: relative;
+  display: inline-block;
+  width: 20%;
+  height: 100px;
+  padding: 8px;
+}
+
+.title {
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    padding: 3%;
+    border: solid;
+    border-radius: 13px;
+    top: -12%;
+    left: -15%;
+    width: 60%;
+  }
+
+.cat-box-holder {
+  width: 100%;
+  position: relative;
+}
+</style>
+
+
+</div>
 	<div class="question-submition-container">
 		<%= form_for([@question]) do |f|%>
 
