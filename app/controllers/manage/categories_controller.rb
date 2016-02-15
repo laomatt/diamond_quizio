@@ -22,14 +22,14 @@ class Manage::CategoriesController < Manage::BaseController
     ranks = params[:rankings].to_json
     @category.update_attributes(:rankings => ranks)
 
-    flash[:notice] = "Attr updated"
+    flash[:notice] = "updated"
     redirect_to :back
   end
 
   private
 
   def category_edit_params
-    params.require(:edit).permit(:name, :image_url)
+    params.require(:edit).permit(:name, :image_url, :thumbnail_url)
   end
 
   def find_category
