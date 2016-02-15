@@ -14,14 +14,14 @@ class CategoriesController < ApplicationController
   def public_show
     @category = Category.find(params[:id])
     if current_user
-      redirect_to "/categories/#{@category.id}/private_show"
+      redirect_to :action => :private_show
     end
   end
 
   def private_show
     @category = Category.find(params[:id])
     if !current_user
-      redirect_to "/categories/#{@category.id}/public_show"
+      redirect_to :action => :public_show
     end
   end
 

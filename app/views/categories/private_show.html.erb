@@ -34,8 +34,25 @@
       </div>
       <div class="form-section"></div>
       <hr>
-      <input type="submit" name="commit" value="Submit Question" class="submit-button">
     </form>
+
+    <a href="#" id="q-form-sub">
+      <button class="btn btn-primary submit-button-q">Submit Question</button>
+    </a>
   </div>
 
 </div>
+
+<style>
+  .submit-button-q {
+    width: 100%;
+  }
+</style>
+
+
+<script>
+  $('body').on('click', '."#q-form-sub"', function(event) {
+    event.preventDefault();
+    $("form#new_question").trigger('submit');
+  });
+</script>
